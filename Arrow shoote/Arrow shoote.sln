@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arrow shooter", "Arrow shoote\Arrow shooter.csproj", "{E6F6E6D7-AFDD-483F-840C-EE3E4F749BF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6F6E6D7-AFDD-483F-840C-EE3E4F749BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6F6E6D7-AFDD-483F-840C-EE3E4F749BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6F6E6D7-AFDD-483F-840C-EE3E4F749BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6F6E6D7-AFDD-483F-840C-EE3E4F749BF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B540DC8F-0A31-4B9E-B0F7-936B2B2E2EC6}
+	EndGlobalSection
+EndGlobal
