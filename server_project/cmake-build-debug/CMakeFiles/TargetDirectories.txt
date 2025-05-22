@@ -1,0 +1,4 @@
+C:/Git/C-projects/server_project/cmake-build-debug/CMakeFiles/echo_server.dir
+C:/Git/C-projects/server_project/cmake-build-debug/CMakeFiles/echo_client.dir
+C:/Git/C-projects/server_project/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Git/C-projects/server_project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
