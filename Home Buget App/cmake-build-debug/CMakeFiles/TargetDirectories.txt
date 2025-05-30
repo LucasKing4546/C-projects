@@ -1,0 +1,5 @@
+C:/Git/C-projects/Home Buget App/cmake-build-debug/CMakeFiles/Home_Buget_App.dir
+C:/Git/C-projects/Home Buget App/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Git/C-projects/Home Buget App/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Git/C-projects/Home Buget App/cmake-build-debug/CMakeFiles/Home_Buget_App_autogen_timestamp_deps.dir
+C:/Git/C-projects/Home Buget App/cmake-build-debug/CMakeFiles/Home_Buget_App_autogen.dir

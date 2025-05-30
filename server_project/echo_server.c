@@ -1,8 +1,4 @@
-// Feature test macros - MUST be before any includes
-#define GNU_SOURCE
-#define POSIX_C_SOURCE 200809L
-#define USE_POSIX
-#define USE_POSIX2
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,21 +10,12 @@
 #include <signal.h>
 #include <errno.h>
 
-// Explicit function declaration if header doesn't provide it
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern int mkfifo(const char *pathname, mode_t mode);
-#ifdef __cplusplus
-}
-#endif
-
 #define FIFO_REQUEST "/tmp/echo_request"
 #define FIFO_RESPONSE "/tmp/echo_response"
 #define BUFFER_SIZE 1024
 
 // Global variables for cleanup
-int server_running = 1;
+volatile int server_running = 1;
 
 void cleanup_handler(int sig) {
     printf("\nServer shutting down...\n");

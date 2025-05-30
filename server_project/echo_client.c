@@ -1,11 +1,4 @@
-//
-// Created by Lucas on 5/22/2025.
-//
-// Feature test macros - MUST be before any includes
-#define GNU_SOURCE
-#define POSIX_C_SOURCE 200809L
-#define USE_POSIX
-#define USE_POSIX2
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,15 +7,6 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-
-// mkfifo is not used in client, but keeping consistent headers
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern int mkfifo(const char *pathname, mode_t mode);
-#ifdef __cplusplus
-}
-#endif
 
 #define FIFO_REQUEST "/tmp/echo_request"
 #define FIFO_RESPONSE "/tmp/echo_response"

@@ -1,0 +1,99 @@
+# ninja log v6
+14	5271	7700644731083965	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+14	5271	7700644731083965	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+14	5271	7700644731083965	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+14	5271	7700644731083965	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+5340	10551	7700644733231714	CMakeFiles/Home_Buget_App.dir/controller/BudgetController.cpp.obj	92b6cdaca0a8bba1
+5362	10684	7700644733455825	CMakeFiles/Home_Buget_App.dir/controller/commands/UpdateCommand.cpp.obj	d276ac7ab0746e54
+5389	10743	7700644733725862	CMakeFiles/Home_Buget_App.dir/controller/filters/DateFilter.cpp.obj	3d9abf4a35c857e4
+5345	10748	7700644733286038	CMakeFiles/Home_Buget_App.dir/controller/commands/AddCommand.cpp.obj	6c3ce366209159c0
+5380	10753	7700644733631908	CMakeFiles/Home_Buget_App.dir/controller/filters/AmountFilter.cpp.obj	26821f88c02b4106
+5370	10759	7700644733539737	CMakeFiles/Home_Buget_App.dir/controller/filters/CategoryFilter.cpp.obj	d76b315dea3d9151
+5308	10777	7700644732914490	CMakeFiles/Home_Buget_App.dir/main.cpp.obj	d3b4ea29f2da366
+5352	10778	7700644733355820	CMakeFiles/Home_Buget_App.dir/controller/commands/RemoveCommand.cpp.obj	9a8c50539a290bb1
+5316	10797	7700644732999117	CMakeFiles/Home_Buget_App.dir/models/BudgetItem.cpp.obj	a3c68c0d3f7f20d7
+5396	10905	7700644733792713	CMakeFiles/Home_Buget_App.dir/controller/filters/CompositeFilter.cpp.obj	fab42d223392d4a5
+5324	10932	7700644733068025	CMakeFiles/Home_Buget_App.dir/repository/CsvRepository.cpp.obj	c38e08f203625b74
+5332	10969	7700644733158030	CMakeFiles/Home_Buget_App.dir/repository/JsonRepository.cpp.obj	a3bfc737ad946161
+5299	11697	7700644732824476	CMakeFiles/Home_Buget_App.dir/Home_Buget_App_autogen/mocs_compilation.cpp.obj	c1f1db80eb24d99a
+46	2572	7700655355002798	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+46	2572	7700655355002798	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+46	2572	7700655355002798	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+46	2572	7700655355002798	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+2580	6813	7700655356652866	CMakeFiles/Home_Buget_App.dir/main.cpp.obj	d3b4ea29f2da366
+2573	6923	7700655356582871	CMakeFiles/Home_Buget_App.dir/Home_Buget_App_autogen/mocs_compilation.cpp.obj	c1f1db80eb24d99a
+2588	7672	7700655356737960	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	2acbce4dc4e9ca33
+71	434	7700657313985603	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+71	434	7700657313985603	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+71	434	7700657313985603	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+71	434	7700657313985603	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+435	4409	7700657317617882	CMakeFiles/Home_Buget_App.dir/models/BudgetItem.cpp.obj	a3c68c0d3f7f20d7
+444	4831	7700657317686632	CMakeFiles/Home_Buget_App.dir/controller/BudgetController.cpp.obj	92b6cdaca0a8bba1
+93	3333	7701275559911656	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+93	3333	7701275559911656	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+93	3333	7701275559911656	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+93	3333	7701275559911656	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+3385	8719	7701275561878039	CMakeFiles/Home_Buget_App.dir/controller/commands/UpdateCommand.cpp.obj	d276ac7ab0746e54
+3391	8739	7701275561938045	CMakeFiles/Home_Buget_App.dir/controller/filters/CategoryFilter.cpp.obj	d76b315dea3d9151
+3400	8743	7701275562028049	CMakeFiles/Home_Buget_App.dir/controller/filters/AmountFilter.cpp.obj	26821f88c02b4106
+3410	8752	7701275562128056	CMakeFiles/Home_Buget_App.dir/controller/filters/DateFilter.cpp.obj	3d9abf4a35c857e4
+3369	8767	7701275561718050	CMakeFiles/Home_Buget_App.dir/controller/commands/AddCommand.cpp.obj	6c3ce366209159c0
+3377	8775	7701275561788034	CMakeFiles/Home_Buget_App.dir/controller/commands/RemoveCommand.cpp.obj	9a8c50539a290bb1
+3347	8798	7701275561482841	CMakeFiles/Home_Buget_App.dir/models/BudgetItem.cpp.obj	a3c68c0d3f7f20d7
+3420	8940	7701275562218049	CMakeFiles/Home_Buget_App.dir/controller/filters/CompositeFilter.cpp.obj	fab42d223392d4a5
+3357	9095	7701275561592850	CMakeFiles/Home_Buget_App.dir/repository/JsonRepository.cpp.obj	a3bfc737ad946161
+3362	9151	7701275561638049	CMakeFiles/Home_Buget_App.dir/controller/BudgetController.cpp.obj	92b6cdaca0a8bba1
+3341	9566	7701275561432800	CMakeFiles/Home_Buget_App.dir/main.cpp.obj	d3b4ea29f2da366
+3334	9660	7701275561362789	CMakeFiles/Home_Buget_App.dir/Home_Buget_App_autogen/mocs_compilation.cpp.obj	c1f1db80eb24d99a
+3429	10412	7701275562308050	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	2acbce4dc4e9ca33
+80	3599	7701277675402399	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+80	3599	7701277675402399	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+80	3599	7701277675402399	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+80	3599	7701277675402399	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+3618	7796	7701277677084601	CMakeFiles/Home_Buget_App.dir/controller/BudgetController.cpp.obj	92b6cdaca0a8bba1
+3606	8154	7701277676964571	CMakeFiles/Home_Buget_App.dir/main.cpp.obj	d3b4ea29f2da366
+3600	8363	7701277676904593	CMakeFiles/Home_Buget_App.dir/Home_Buget_App_autogen/mocs_compilation.cpp.obj	c1f1db80eb24d99a
+3623	8961	7701277677134600	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	2acbce4dc4e9ca33
+22	3601	7701305978489480	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+22	3601	7701305978489480	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+22	3601	7701305978489480	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+22	3601	7701305978489480	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+3665	8783	7701305980585067	CMakeFiles/Home_Buget_App.dir/controller/commands/UpdateCommand.cpp.obj	d276ac7ab0746e54
+3695	8880	7701305980890402	CMakeFiles/Home_Buget_App.dir/controller/filters/DateFilter.cpp.obj	3d9abf4a35c857e4
+3675	8907	7701305980685160	CMakeFiles/Home_Buget_App.dir/controller/filters/CategoryFilter.cpp.obj	d76b315dea3d9151
+3648	8909	7701305980415039	CMakeFiles/Home_Buget_App.dir/controller/commands/AddCommand.cpp.obj	6c3ce366209159c0
+3657	8911	7701305980505075	CMakeFiles/Home_Buget_App.dir/controller/commands/RemoveCommand.cpp.obj	9a8c50539a290bb1
+3685	8924	7701305980785149	CMakeFiles/Home_Buget_App.dir/controller/filters/AmountFilter.cpp.obj	26821f88c02b4106
+3617	8946	7701305980105074	CMakeFiles/Home_Buget_App.dir/models/BudgetItem.cpp.obj	a3c68c0d3f7f20d7
+3703	9098	7701305980970382	CMakeFiles/Home_Buget_App.dir/controller/filters/CompositeFilter.cpp.obj	fab42d223392d4a5
+3624	9184	7701305980175090	CMakeFiles/Home_Buget_App.dir/repository/CsvRepository.cpp.obj	c38e08f203625b74
+3639	9220	7701305980325050	CMakeFiles/Home_Buget_App.dir/controller/BudgetController.cpp.obj	92b6cdaca0a8bba1
+3630	9241	7701305980235058	CMakeFiles/Home_Buget_App.dir/repository/JsonRepository.cpp.obj	a3bfc737ad946161
+3610	9695	7701305980035086	CMakeFiles/Home_Buget_App.dir/main.cpp.obj	d3b4ea29f2da366
+3603	9823	7701305979955084	CMakeFiles/Home_Buget_App.dir/Home_Buget_App_autogen/mocs_compilation.cpp.obj	c1f1db80eb24d99a
+3712	10546	7701305981050392	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	2acbce4dc4e9ca33
+10546	12289	7701306049387405	Home_Buget_App.exe	54837386132b6f09
+21	461	7703373881572137	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+21	461	7703373881572137	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+21	461	7703373881572137	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+21	461	7703373881572137	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+462	7210	7703373885981613	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	2acbce4dc4e9ca33
+7210	10050	7703373953463334	Home_Buget_App.exe	54837386132b6f09
+64	414	7703375093584323	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+64	414	7703375093584323	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+64	414	7703375093584323	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+64	414	7703375093584323	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+416	6870	7703375097102892	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	2acbce4dc4e9ca33
+6870	8345	7703375161650484	Home_Buget_App.exe	54837386132b6f09
+21	362	7703376716717088	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+21	362	7703376716717088	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+21	362	7703376716717088	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+21	362	7703376716717088	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+363	7355	7703376720134204	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	2acbce4dc4e9ca33
+7355	8934	7703376790059637	Home_Buget_App.exe	54837386132b6f09
+80	473	7703378091783379	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+80	473	7703378091783379	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+80	473	7703378091783379	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+80	473	7703378091783379	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+475	6037	7703378095718810	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	2acbce4dc4e9ca33
+6037	7544	7703378151343241	Home_Buget_App.exe	54837386132b6f09

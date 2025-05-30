@@ -1,0 +1,3 @@
+C:/Git/C-projects/chat_project/cmake-build-debug/CMakeFiles/chat_project.dir
+C:/Git/C-projects/chat_project/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Git/C-projects/chat_project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
