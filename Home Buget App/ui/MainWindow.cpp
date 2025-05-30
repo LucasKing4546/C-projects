@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include <QLineEdit>
 #include <QDate>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
     , m_updateBtn(new QPushButton("Update Selected", this))
     , m_removeBtn(new QPushButton("Remove Selected", this))
     , m_undoBtn(new QPushButton("Undo", this))
+    , m_saveBtn(new QPushButton("Save", this))
+    , m_loadBtn(new QPushButton("Load", this))
     , m_typeFilter(new QComboBox(this))
     , m_categoryFilter(new QComboBox(this))
     , m_fromDate(new QDateEdit(this))
@@ -84,6 +87,8 @@ MainWindow::MainWindow(QWidget *parent)
     mainLayout->addWidget(m_updateBtn);
     mainLayout->addWidget(m_removeBtn);
     mainLayout->addWidget(m_undoBtn);
+    mainLayout->addWidget(m_saveBtn);
+    mainLayout->addWidget(m_loadBtn);
 
     setCentralWidget(central);
     setWindowTitle("Home Budget Tracker");
@@ -93,6 +98,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_updateBtn, &QPushButton::clicked, this, &MainWindow::onUpdateClicked);
     connect(m_removeBtn, &QPushButton::clicked, this, &MainWindow::onRemoveClicked);
     connect(m_undoBtn,   &QPushButton::clicked, this, &MainWindow::onUndoClicked);
+    connect(m_saveBtn,   &QPushButton::clicked, this, &MainWindow::onSaveClicked);
+    connect(m_loadBtn,   &QPushButton::clicked, this, &MainWindow::onLoadClicked);
     connect(m_applyFilterBtn, &QPushButton::clicked, this, &MainWindow::onApplyFilterClicked);
     connect(m_clearFilterBtn, &QPushButton::clicked, this, &MainWindow::onClearFilterClicked);
     connect(m_controller.get(), &BudgetController::dataChanged,
@@ -156,7 +163,6 @@ void MainWindow::onAddClicked() {
                        BudgetItem::stringToType(typeStr),
                        BudgetItem::stringToCategory(catStr));
     m_controller->addItem(newItem);
-    m_controller->save();
 }
 
 void MainWindow::onUpdateClicked() {
@@ -203,7 +209,6 @@ void MainWindow::onUpdateClicked() {
                        BudgetItem::stringToType(typeStr),
                        BudgetItem::stringToCategory(catStr));
     m_controller->updateItem(id, updated);
-    m_controller->save();
 }
 
 void MainWindow::onRemoveClicked() {
@@ -212,12 +217,118 @@ void MainWindow::onRemoveClicked() {
     int row = sel.first().row();
     int id  = m_table->item(row, 0)->text().toInt();
     m_controller->removeItem(id);
-    m_controller->save();
 }
 
 void MainWindow::onUndoClicked() {
-    if (m_controller->undo())
-        m_controller->save();
+    m_controller->undo();
+}
+
+void MainWindow::onSaveClicked() {
+    QString fileName = QFileDialog::getSaveFileName(
+        this,
+        "Save Budget Data",
+        "budget_data.csv",
+        "CSV Files (*.csv);;JSON Files (*.json);;All Files (*)"
+    );
+
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    std::unique_ptr<BaseRepository> repository;
+
+    if (fileName.endsWith(".json", Qt::CaseInsensitive)) {
+        repository = std::make_unique<JsonRepository>(fileName);
+    } else {
+        repository = std::make_unique<CsvRepository>(fileName);
+    }
+
+    if (repository->save(m_controller->getAllItems())) {
+        QMessageBox::information(this, "Save Successful",
+                                "Budget data saved successfully to: " + fileName);
+    } else {
+        QMessageBox::warning(this, "Save Failed",
+                            "Failed to save budget data to: " + fileName);
+    }
+}
+
+void MainWindow::onLoadClicked() {
+    QString fileName = QFileDialog::getOpenFileName(
+        this,
+        "Load Budget Data",
+        "",
+        "CSV Files (*.csv);;JSON Files (*.json);;All Files (*)"
+    );
+
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    std::unique_ptr<BaseRepository> repository;
+
+    if (fileName.endsWith(".json", Qt::CaseInsensitive)) {
+        repository = std::make_unique<JsonRepository>(fileName);
+    } else {
+        repository = std::make_unique<CsvRepository>(fileName);
+    }
+
+    if (!repository->isValid()) {
+        QMessageBox::warning(this, "Load Failed",
+                            "Selected file is invalid or cannot be accessed: " + fileName);
+        return;
+    }
+
+    auto loadedItems = repository->load();
+
+    if (loadedItems.empty()) {
+        QMessageBox::information(this, "Load Result",
+                                "No data loaded from file (file may be empty): " + fileName);
+        return;
+    }
+
+    // Ask user if they want to replace current data or append
+    QMessageBox::StandardButton reply = QMessageBox::question(
+        this,
+        "Load Data",
+        QString("Loaded %1 items from file.\n\nDo you want to:\n"
+                "Yes - Replace current data\n"
+                "No - Append to current data\n"
+                "Cancel - Cancel load operation")
+            .arg(loadedItems.size()),
+        QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel
+    );
+
+    if (reply == QMessageBox::Cancel) {
+        return;
+    }
+
+    if (reply == QMessageBox::Yes) {
+        // Replace current data - create new controller with loaded data
+        m_controller = std::make_unique<BudgetController>(
+            std::make_unique<CsvRepository>("data.csv"), this
+        );
+
+        // Add all loaded items
+        for (const auto& item : loadedItems) {
+            m_controller->addItem(item);
+        }
+
+        // Reconnect signal
+        connect(m_controller.get(), &BudgetController::dataChanged,
+                this, &MainWindow::refreshTable);
+    } else {
+        // Append to current data
+        for (const auto& item : loadedItems) {
+            m_controller->addItem(item);
+        }
+    }
+
+    m_controller->save();
+    refreshTable();
+
+    QMessageBox::information(this, "Load Successful",
+                            QString("Successfully loaded %1 items from: %2")
+                                .arg(loadedItems.size()).arg(fileName));
 }
 
 void MainWindow::onApplyFilterClicked() {

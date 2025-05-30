@@ -11,9 +11,12 @@
 #include <QComboBox>
 #include <QDateEdit>
 #include <QDoubleSpinBox>
+#include <QFileDialog>
+#include <QMessageBox>
 #include <memory>
 
 #include "../repository/CsvRepository.h"
+#include "../repository/JsonRepository.h"
 #include "../controller/BudgetController.h"
 #include "../models/BudgetItem.h"
 
@@ -29,6 +32,8 @@ public:
     void onRemoveClicked();
     void onUpdateClicked();
     void onUndoClicked();
+    void onSaveClicked();
+    void onLoadClicked();
     void onApplyFilterClicked();
     void onClearFilterClicked();
     void refreshTable();
@@ -42,6 +47,8 @@ private:
     QPushButton*    m_updateBtn;
     QPushButton*    m_removeBtn;
     QPushButton*    m_undoBtn;
+    QPushButton*    m_saveBtn;
+    QPushButton*    m_loadBtn;
 
     // filter controls
     QComboBox*      m_typeFilter;

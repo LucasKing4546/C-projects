@@ -1,1 +1,3 @@
 id,description,amount,date,type,category
+1,Apa,10.00,2025-05-30,EXPENSE,FOOD
+2,McDonalds,40.00,2025-05-30,EXPENSE,FOOD

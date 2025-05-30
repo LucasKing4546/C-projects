@@ -6,6 +6,7 @@ C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/UYX5
   C:/Git/C-projects/Home\ Buget\ App/models/BudgetItem.h \
   C:/Git/C-projects/Home\ Buget\ App/repository/BaseRepository.h \
   C:/Git/C-projects/Home\ Buget\ App/repository/CsvRepository.h \
+  C:/Git/C-projects/Home\ Buget\ App/repository/JsonRepository.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/algorithm \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/array \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/atomic \
@@ -39,6 +40,10 @@ C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/UYX5
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_defines.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_ptr.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_dir.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_fwd.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_ops.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_path.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functexcept.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functional_hash.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hash_bytes.h \
@@ -133,6 +138,7 @@ C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/UYX5
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/climits \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/clocale \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cmath \
+  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/codecvt \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/compare \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/concepts \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstddef \
@@ -154,6 +160,7 @@ C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/UYX5
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/numeric_traits.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/string_conversions.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/type_traits.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/filesystem \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/format \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/functional \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/initializer_list \
@@ -306,8 +313,13 @@ C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/UYX5
   C:/Qt/6.9.0/mingw_64/include/QtCore/qdatastream.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qdatetime.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qdebug.h \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/qdir.h \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/qdirlisting.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qendian.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qexceptionhandling.h \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/qfile.h \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/qfiledevice.h \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/qfileinfo.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qflags.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qfloat16.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qforeach.h \
@@ -318,6 +330,7 @@ C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/UYX5
   C:/Qt/6.9.0/mingw_64/include/QtCore/qglobalstatic.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qhash.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qhashfunctions.h \
+  C:/Qt/6.9.0/mingw_64/include/QtCore/qiodevice.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qiodevicebase.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qitemselectionmodel.h \
   C:/Qt/6.9.0/mingw_64/include/QtCore/qiterable.h \
@@ -436,8 +449,10 @@ C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/UYX5
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QComboBox \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QDateEdit \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QDoubleSpinBox \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QFileDialog \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QHeaderView \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMessageBox \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QPushButton \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QTableWidget \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QTableWidgetItem \
@@ -449,9 +464,13 @@ C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/UYX5
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractspinbox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qcombobox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdatetimeedit.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdialog.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qfiledialog.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qframe.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qheaderview.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qmainwindow.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qmessagebox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qpushbutton.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qrubberband.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qsizepolicy.h \
