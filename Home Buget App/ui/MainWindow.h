@@ -20,6 +20,14 @@
 #include "../controller/BudgetController.h"
 #include "../models/BudgetItem.h"
 
+// Add filter strategy includes
+#include "../controller/filters/FilterStrategy.h"
+#include "../controller/filters/CompositeFilter.h"
+#include "../controller/filters/CategoryFilter.h"
+#include "../controller/filters/DateFilter.h"
+#include "../controller/filters/AmountFilter.h"
+#include "../controller/filters/TypeFilter.h"
+
 class MainWindow : public QMainWindow {
     Q_OBJECT
 

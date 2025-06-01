@@ -105,9 +105,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_controller.get(), &BudgetController::dataChanged,
             this, &MainWindow::refreshTable);
 
-    // Initial load
-    m_controller->load();
-    refreshTable();
 }
 
 void MainWindow::populateTable(const std::vector<BudgetItem>& items) {
@@ -323,7 +320,6 @@ void MainWindow::onLoadClicked() {
         }
     }
 
-    m_controller->save();
     refreshTable();
 
     QMessageBox::information(this, "Load Successful",
@@ -332,59 +328,97 @@ void MainWindow::onLoadClicked() {
 }
 
 void MainWindow::onApplyFilterClicked() {
-    auto items = m_controller->getAllItems();  // start from full list :contentReference[oaicite:2]{index=2}
+    try {
+        // Create a composite filter with AND logic (all conditions must be met)
+        auto compositeFilter = std::make_unique<CompositeFilter>(LogicalOperator::AND);
+        bool hasActiveFilters = false;
 
-    // type filter
-    QString t = m_typeFilter->currentText();
-    if (t != "All") {
-        items.erase(
-            std::remove_if(items.begin(), items.end(),
-                [&](const BudgetItem& i){ return BudgetItem::typeToString(i.getType()) != t; }),
-            items.end()
-        );
+        // 1. Add Type Filter
+        QString selectedType = m_typeFilter->currentText();
+        if (selectedType != "All") {
+            TransactionType type = BudgetItem::stringToType(selectedType);
+            auto typeFilter = std::make_unique<TypeFilter>(type);
+            compositeFilter->addFilter(std::move(typeFilter));
+            hasActiveFilters = true;
+        }
+
+        // 2. Add Category Filter
+        QString selectedCategory = m_categoryFilter->currentText();
+        if (selectedCategory != "All") {
+            Category category = BudgetItem::stringToCategory(selectedCategory);
+            auto categoryFilter = std::make_unique<CategoryFilter>(category);
+            compositeFilter->addFilter(std::move(categoryFilter));
+            hasActiveFilters = true;
+        }
+
+        // 3. Add Date Range Filter
+        QDate fromDate = m_fromDate->date();
+        QDate toDate = m_toDate->date();
+
+        // Validate date range
+        if (fromDate > toDate) {
+            QMessageBox::warning(this, "Invalid Date Range",
+                                "From date cannot be later than To date.");
+            return;
+        }
+
+        // Always apply date filter with current range
+        auto dateFilter = std::make_unique<DateFilter>(DateComparison::BETWEEN, fromDate, toDate);
+        compositeFilter->addFilter(std::move(dateFilter));
+        hasActiveFilters = true;
+
+        // 4. Add Amount Range Filter
+        double minAmount = m_minAmount->value();
+        double maxAmount = m_maxAmount->value();
+
+        // Validate amount range
+        if (maxAmount > 0 && minAmount > maxAmount) {
+            QMessageBox::warning(this, "Invalid Amount Range",
+                                "Minimum amount cannot be greater than maximum amount.");
+            return;
+        }
+
+        if (minAmount > 0 || maxAmount > 0) {
+            if (maxAmount > 0) {
+                // Use BETWEEN comparison when both min and max are specified
+                auto amountFilter = std::make_unique<AmountFilter>(AmountComparison::BETWEEN, minAmount, maxAmount);
+                compositeFilter->addFilter(std::move(amountFilter));
+            } else {
+                // Only minimum amount specified
+                auto amountFilter = std::make_unique<AmountFilter>(AmountComparison::GREATER_THAN, minAmount - 0.01);
+                compositeFilter->addFilter(std::move(amountFilter));
+            }
+            hasActiveFilters = true;
+        }
+
+        // Apply the composite filter and display results
+        if (hasActiveFilters) {
+            auto filteredItems = m_controller->getFilteredItems(*compositeFilter);
+            populateTable(filteredItems);
+
+        } else {
+            // No filters applied, show all items
+            refreshTable();
+        }
+
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Filter Error",
+                             QString("An error occurred while applying filters: %1").arg(e.what()));
+        // Fallback to showing all items
+        refreshTable();
     }
-
-    // category filter
-    QString c = m_categoryFilter->currentText();
-    if (c != "All") {
-        items.erase(
-            std::remove_if(items.begin(), items.end(),
-                [&](const BudgetItem& i){ return BudgetItem::categoryToString(i.getCategory()) != c; }),
-            items.end()
-        );
-    }
-
-    // date range filter
-    QDate from = m_fromDate->date();
-    QDate to   = m_toDate->date();
-    items.erase(
-        std::remove_if(items.begin(), items.end(),
-            [&](const BudgetItem& i){ return i.getDate() < from || i.getDate() > to; }),
-        items.end()
-    );
-
-    // amount range filter (0 means no-upper-limit if max == 0)
-    double minA = m_minAmount->value();
-    double maxA = m_maxAmount->value();
-    items.erase(
-        std::remove_if(items.begin(), items.end(),
-            [&](const BudgetItem& i){
-                bool below = i.getAmount() < minA;
-                bool above = (maxA > 0 && i.getAmount() > maxA);
-                return below || above;
-            }),
-        items.end()
-    );
-
-    populateTable(items);
 }
 
+// Bonus: Enhanced Clear Filters method
 void MainWindow::onClearFilterClicked() {
-    m_typeFilter->setCurrentIndex(0);
-    m_categoryFilter->setCurrentIndex(0);
+    // Reset all filter controls to default values
+    m_typeFilter->setCurrentIndex(0);           // "All"
+    m_categoryFilter->setCurrentIndex(0);       // "All"
     m_fromDate->setDate(QDate::currentDate().addMonths(-1));
     m_toDate->setDate(QDate::currentDate());
     m_minAmount->setValue(0);
     m_maxAmount->setValue(0);
+
+    // Show all items
     refreshTable();
 }

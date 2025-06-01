@@ -53,7 +53,7 @@ public:
 
     // Serialization
     QString toCsvString() const;
-    static BudgetItem fromCsvString(const QString& csvLine);  // Made static
+    static BudgetItem fromCsvString(const QString& csvLine);
     QJsonObject toJson() const;
     static BudgetItem fromJson(const QJsonObject& json);
 

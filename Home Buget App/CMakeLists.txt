@@ -1,21 +1,27 @@
 cmake_minimum_required(VERSION 3.30)
-project(Home_Buget_App)
+project(Home_Buget_App LANGUAGES CXX)
 
+# 1) Use C++20
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# 2) Enable Qt’s auto‐tools (moc, uic, rcc)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
+# 3) Point CMake at your Qt installation (adjust if needed)
 set(CMAKE_PREFIX_PATH "C:/Qt/6.9.0/mingw_64/lib/cmake")
 
-find_package(Qt6 COMPONENTS
+# 4) Find the Qt6 modules you need
+find_package(Qt6 REQUIRED COMPONENTS
         Core
         Gui
         Widgets
-        REQUIRED)
+)
 
-# Source files
-set(SOURCES
+# 5) List your application’s sources and headers
+set(APP_SOURCES
         main.cpp
         models/BudgetItem.cpp
         repository/CsvRepository.cpp
@@ -28,11 +34,11 @@ set(SOURCES
         controller/filters/AmountFilter.cpp
         controller/filters/DateFilter.cpp
         controller/filters/CompositeFilter.cpp
+        controller/filters/TypeFilter.cpp
         ui/MainWindow.cpp
 )
 
-# Header files
-set(HEADERS
+set(APP_HEADERS
         models/BudgetItem.h
         repository/BaseRepository.h
         repository/CsvRepository.h
@@ -47,25 +53,45 @@ set(HEADERS
         controller/filters/AmountFilter.h
         controller/filters/DateFilter.h
         controller/filters/CompositeFilter.h
+        controller/filters/TypeFilter.h
         ui/MainWindow.h
 )
 
-add_executable(Home_Buget_App ${SOURCES} ${HEADERS})
+# 6) Create the single executable target
+add_executable(Home_Buget_App
+        ${APP_SOURCES}
+        ${APP_HEADERS}   # Headers included so Qt’s moc/uic can see Q_OBJECT, etc.
+)
 
-target_link_libraries(Home_Buget_App
+# 7) Link against Qt6 in keyword form (PRIVATE)
+target_link_libraries(Home_Buget_App PRIVATE
         Qt::Core
         Qt::Gui
         Qt::Widgets
 )
 
-# Optional: Build tests
-option(BUILD_TESTS "Build tests" OFF)
-if(BUILD_TESTS)
-    find_package(GTest REQUIRED)
+# --------------------------------------------------
+# 8) Optionally “embed” GoogleTest into this same exe
+# --------------------------------------------------
+option(BUILD_TESTS "When ON, compile in and run GTest unit tests before launching the GUI" OFF)
+if (BUILD_TESTS)
+    include(FetchContent)
 
+    # 8.1 Declare Googletest (pin to an exact tag on GitHub)
+    FetchContent_Declare(
+            googletest
+            GIT_REPOSITORY https://github.com/google/googletest.git
+            GIT_TAG        v1.14.0
+    )
+    # 8.2 Download & configure GoogleTest
+    FetchContent_MakeAvailable(googletest)
+
+    # 8.3 List all test .cpp files plus implementation .cpps they depend on
     set(TEST_SOURCES
             tests/test_repository.cpp
             tests/test_controller.cpp
+            #
+            # Also compile your implementation files so the test code can link against them
             models/BudgetItem.cpp
             repository/CsvRepository.cpp
             repository/JsonRepository.cpp
@@ -79,39 +105,60 @@ if(BUILD_TESTS)
             controller/filters/CompositeFilter.cpp
     )
 
-    add_executable(BudgetTrackerTests ${TEST_SOURCES})
-    target_link_libraries(BudgetTrackerTests
-            GTest::gtest_main
-            Qt::Core
+    # 8.4 Add those TEST_SOURCES into Home_Buget_App (PRIVATE)
+    target_sources(Home_Buget_App PRIVATE ${TEST_SOURCES})
+
+    # 8.5 Link Home_Buget_App against gtest (PRIVATE)
+    #     (We do NOT use gtest_main here, because our main() is in main.cpp)
+    target_link_libraries(Home_Buget_App PRIVATE
+            gtest
+            Qt::Core   # only if tests reference Qt types (QString, QDate, etc.)
     )
+
+    # 8.6 On non‐Windows, link pthread for GTest
+    if (NOT WIN32)
+        target_link_libraries(Home_Buget_App PRIVATE pthread)
+    endif()
+
+    # 8.7 Register the executable as a CTest test
+    enable_testing()
+    add_test(NAME AllTests COMMAND Home_Buget_App)
 endif()
 
-# Windows-specific DLL copying (your existing code)
+# --------------------------------------------------
+# 9) Windows‐only: copy Qt6 DLLs next to the executable
+# --------------------------------------------------
 if (WIN32 AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
-    set(DEBUG_SUFFIX)
+    set(DEBUG_SUFFIX "")
     if (MSVC AND CMAKE_BUILD_TYPE MATCHES "Debug")
         set(DEBUG_SUFFIX "d")
     endif()
+
     set(QT_INSTALL_PATH "${CMAKE_PREFIX_PATH}")
-    if(NOT EXISTS "${QT_INSTALL_PATH}/bin")
+    if (NOT EXISTS "${QT_INSTALL_PATH}/bin")
         set(QT_INSTALL_PATH "${QT_INSTALL_PATH}/..")
-        if(NOT EXISTS "${QT_INSTALL_PATH}/bin")
+        if (NOT EXISTS "${QT_INSTALL_PATH}/bin")
             set(QT_INSTALL_PATH "${QT_INSTALL_PATH}/..")
         endif()
     endif()
-    if(EXISTS "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll")
+
+    if (EXISTS "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll")
         add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E make_directory
-                "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/")
+                "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/"
+        )
         add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy
                 "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll"
-                "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/")
+                "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/"
+        )
     endif()
-    foreach(QT_LIB Core Gui Widgets )
+
+    foreach(QT_LIB Core Gui Widgets)
         add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy
                 "${QT_INSTALL_PATH}/bin/Qt6${QT_LIB}${DEBUG_SUFFIX}.dll"
-                "$<TARGET_FILE_DIR:${PROJECT_NAME}>")
-    endforeach(QT_LIB)
+                "$<TARGET_FILE_DIR:${PROJECT_NAME}>"
+        )
+    endforeach()
 endif()
