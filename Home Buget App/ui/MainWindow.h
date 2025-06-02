@@ -13,6 +13,9 @@
 #include <QDoubleSpinBox>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QRadioButton>
+#include <QButtonGroup>
+#include <QGroupBox>
 #include <memory>
 
 #include "../repository/CsvRepository.h"
@@ -67,4 +70,10 @@ private:
     QDoubleSpinBox* m_maxAmount;
     QPushButton*    m_applyFilterBtn;
     QPushButton*    m_clearFilterBtn;
+
+    // AND/OR logic controls
+    QRadioButton*   m_andRadio;
+    QRadioButton*   m_orRadio;
+    QButtonGroup*   m_logicGroup;
+    QGroupBox*      m_logicGroupBox;
 };

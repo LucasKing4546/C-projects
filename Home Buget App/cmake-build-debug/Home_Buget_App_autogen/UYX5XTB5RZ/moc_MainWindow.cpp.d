@@ -2,7 +2,12 @@ C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/UYX5
   C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/moc_predefs.h \
   C:/Git/C-projects/Home\ Buget\ App/controller/BudgetController.h \
   C:/Git/C-projects/Home\ Buget\ App/controller/commands/Command.h \
+  C:/Git/C-projects/Home\ Buget\ App/controller/filters/AmountFilter.h \
+  C:/Git/C-projects/Home\ Buget\ App/controller/filters/CategoryFilter.h \
+  C:/Git/C-projects/Home\ Buget\ App/controller/filters/CompositeFilter.h \
+  C:/Git/C-projects/Home\ Buget\ App/controller/filters/DateFilter.h \
   C:/Git/C-projects/Home\ Buget\ App/controller/filters/FilterStrategy.h \
+  C:/Git/C-projects/Home\ Buget\ App/controller/filters/TypeFilter.h \
   C:/Git/C-projects/Home\ Buget\ App/models/BudgetItem.h \
   C:/Git/C-projects/Home\ Buget\ App/repository/BaseRepository.h \
   C:/Git/C-projects/Home\ Buget\ App/repository/CsvRepository.h \
@@ -446,14 +451,17 @@ C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/UYX5
   C:/Qt/6.9.0/mingw_64/include/QtGui/qvalidator.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.9.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QButtonGroup \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QComboBox \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QDateEdit \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QDoubleSpinBox \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QFileDialog \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QGroupBox \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QHeaderView \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMainWindow \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QMessageBox \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QPushButton \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/QRadioButton \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QTableWidget \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/QTableWidgetItem \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractbutton.h \
@@ -462,16 +470,19 @@ C:/Git/C-projects/Home\ Buget\ App/cmake-build-debug/Home_Buget_App_autogen/UYX5
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractslider.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qabstractspinbox.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qbuttongroup.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qcombobox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdatetimeedit.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdialog.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qfiledialog.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qframe.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qgroupbox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qheaderview.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qmainwindow.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qmessagebox.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qpushbutton.h \
+  C:/Qt/6.9.0/mingw_64/include/QtWidgets/qradiobutton.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qrubberband.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.9.0/mingw_64/include/QtWidgets/qslider.h \

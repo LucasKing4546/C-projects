@@ -25,9 +25,6 @@ protected:
         controller = std::make_unique<BudgetController>(std::move(repo));
 
         // Create test items:
-        //   - testItem1: INCOME  (Salary)
-        //   - testItem2: EXPENSE (Groceries)
-        //   - testItem3: EXPENSE (Movie)
         testItem1 = BudgetItem(0, "Salary",    3000.0, QDate(2025, 1, 1), TransactionType::INCOME,    Category::INCOME_SALARY);
         testItem2 = BudgetItem(0, "Groceries", 150.0,  QDate(2025, 1, 2), TransactionType::EXPENSE,   Category::FOOD);
         testItem3 = BudgetItem(0, "Movie",     25.0,   QDate(2025, 1, 3), TransactionType::EXPENSE,   Category::ENTERTAINMENT);
@@ -208,7 +205,6 @@ TEST_F(BudgetControllerTest, DateFilter) {
     EXPECT_EQ(filtered[0].getDescription(), "Groceries");
 }
 
-// NEW: TypeFilter Test (filters by TransactionType)
 TEST_F(BudgetControllerTest, TypeFilter) {
     controller->addItem(testItem1); // INCOME
     controller->addItem(testItem2); // EXPENSE

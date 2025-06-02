@@ -1,17 +1,17 @@
 # ninja log v6
 10493	14050	7703851360413276	lib/libgtest.a	ba449131087dddd1
-99	3546	7705106447866610	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+40	353	7705132669339957	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
 17313	27165	7703851428614612	CMakeFiles/BudgetTrackerTests.dir/controller/filters/CategoryFilter.cpp.obj	6dca7ff9a3abc3e5
-99	3546	7705106447866610	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+40	353	7705132669339957	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
 160	3216	7703851895794396	CMakeFiles/BudgetTrackerTests.dir/tests/test_controller.cpp.obj	c5809f769430f626
 3626	9236	7705106450030489	CMakeFiles/Home_Buget_App.dir/controller/filters/DateFilter.cpp.obj	767d5298c52cb2a1
 17318	27088	7703851428654690	CMakeFiles/BudgetTrackerTests.dir/controller/filters/AmountFilter.cpp.obj	80699d307245a923
 3603	9121	7705106449800503	CMakeFiles/Home_Buget_App.dir/controller/commands/UpdateCommand.cpp.obj	b68963d7726306fc
 3588	8999	7705106449640499	CMakeFiles/Home_Buget_App.dir/controller/commands/AddCommand.cpp.obj	633688ba56ad66fb
-3652	10686	7705106450284311	CMakeFiles/Home_Buget_App.dir/tests/test_repository.cpp.obj	fe987f365e64723e
-99	3546	7705106447866610	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
-99	3546	7705106447866610	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
-3581	9596	7705106449576708	CMakeFiles/Home_Buget_App.dir/controller/BudgetController.cpp.obj	bd2adb503a926cd7
+349	5824	7705111355299103	CMakeFiles/Home_Buget_App.dir/tests/test_repository.cpp.obj	fe987f365e64723e
+40	353	7705132669339957	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+40	353	7705132669339957	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+355	5992	7705132672491146	CMakeFiles/Home_Buget_App.dir/controller/BudgetController.cpp.obj	bd2adb503a926cd7
 17307	27040	7703851428561946	CMakeFiles/BudgetTrackerTests.dir/controller/commands/UpdateCommand.cpp.obj	bd5e336379f721d8
 3618	9155	7705106449950486	CMakeFiles/Home_Buget_App.dir/controller/filters/AmountFilter.cpp.obj	bc0524e8d847dd1c
 3610	9172	7705106449870477	CMakeFiles/Home_Buget_App.dir/controller/filters/CategoryFilter.cpp.obj	105a127a6ec13e32
@@ -19,7 +19,7 @@
 3555	10793	7705106449314983	CMakeFiles/Home_Buget_App.dir/main.cpp.obj	3a307de64ce5b7df
 3595	9375	7705106449710474	CMakeFiles/Home_Buget_App.dir/controller/commands/RemoveCommand.cpp.obj	5e059d2265dc53c5
 14224	15461	7703851397732049	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	4136e2fc46d71df8
-3642	11551	7705106450190505	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	84e2ec83fa88f550
+157	3514	7705128929100223	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	84e2ec83fa88f550
 3561	9224	7705106449370381	CMakeFiles/Home_Buget_App.dir/models/BudgetItem.cpp.obj	d23467ca2fb58ae1
 14050	14220	7703851397234999	C:/Git/C-projects/Home Buget App/cmake-build-debug/_deps/googletest-build/googletest/gtest_main_autogen/timestamp	8293a4d2b1117309
 3090	3322	7703852586182364	_deps/googletest-build/googlemock/gmock_main_autogen/timestamp	80f1f05717873231
@@ -30,7 +30,7 @@
 15461	15536	7703851410104837	lib/libgtest_main.a	b1babb066da84a85
 3547	10522	7705106449238511	CMakeFiles/Home_Buget_App.dir/Home_Buget_App_autogen/mocs_compilation.cpp.obj	a1f1f0f99b5c1f3e
 9	148	7703851256569952	C:/Git/C-projects/Home Buget App/cmake-build-debug/_deps/googletest-build/googletest/gtest_autogen/timestamp	e537c0ec9222627
-15999	21541	7703861320809580	Home_Buget_App.exe	ff068873d3d643a3
+3514	9074	7705128962669302	Home_Buget_App.exe	144925ea35a5a573
 14050	14220	7703851397234999	_deps/googletest-build/googletest/gtest_main_autogen/timestamp	8293a4d2b1117309
 14050	14220	7703851397234999	_deps/googletest-build/googletest/gtest_main_autogen/mocs_compilation.cpp	8293a4d2b1117309
 9	148	7703851256569952	_deps/googletest-build/googletest/gtest_autogen/timestamp	e537c0ec9222627
@@ -66,29 +66,34 @@
 3090	3322	7703852586182364	C:/Git/C-projects/Home Buget App/cmake-build-debug/_deps/googletest-build/googlemock/gmock_main_autogen/mocs_compilation.cpp	80f1f05717873231
 3330	5528	7703852586897782	_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.obj	b866dee947f5f18e
 5528	5623	7703852608882837	lib/libgmock_main.a	53dfd000b0efe312
-3661	10384	7705106450379492	CMakeFiles/Home_Buget_App.dir/tests/test_controller.cpp.obj	f6921bd886af1226
-22	341	7705111352036627	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
-22	341	7705111352036627	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
-22	341	7705111352036627	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
-22	341	7705111352036627	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+364	7175	7705132672576390	CMakeFiles/Home_Buget_App.dir/tests/test_controller.cpp.obj	f6921bd886af1226
 342	4109	7705111355239118	CMakeFiles/Home_Buget_App.dir/controller/filters/TypeFilter.cpp.obj	76f6ce00feb1ac34
-349	5824	7705111355299103	CMakeFiles/Home_Buget_App.dir/tests/test_repository.cpp.obj	fe987f365e64723e
-5825	13867	7705111410059629	Home_Buget_App.exe	144925ea35a5a573
-17	210	7705125378857658	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
-17	210	7705125378857658	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
-17	210	7705125378857658	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
-17	210	7705125378857658	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
-211	4187	7705125380791365	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	84e2ec83fa88f550
-4188	9835	7705125420559248	Home_Buget_App.exe	144925ea35a5a573
-20	263	7705126339980640	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
-20	263	7705126339980640	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
-20	263	7705126339980640	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
-20	263	7705126339980640	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
-264	6580	7705126342399251	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	84e2ec83fa88f550
-6580	12171	7705126405577330	Home_Buget_App.exe	144925ea35a5a573
-13	156	7705128927663971	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
-13	156	7705128927663971	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
-13	156	7705128927663971	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
-13	156	7705128927663971	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
-157	3514	7705128929100223	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	84e2ec83fa88f550
-3514	9074	7705128962669302	Home_Buget_App.exe	144925ea35a5a573
+13	162	7705139489944736	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+13	162	7705139489944736	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+13	162	7705139489944736	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+13	162	7705139489944736	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+17	295	7705140665963254	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+17	295	7705140665963254	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+17	295	7705140665963254	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+17	295	7705140665963254	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+302	6096	7705140668801726	CMakeFiles/Home_Buget_App.dir/tests/test_controller.cpp.obj	f6921bd886af1226
+296	6378	7705140668751723	CMakeFiles/Home_Buget_App.dir/tests/test_repository.cpp.obj	fe987f365e64723e
+6379	11761	7705140729575560	Home_Buget_App.exe	144925ea35a5a573
+134	2984	7705767516583163	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+134	2984	7705767516583163	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+134	2984	7705767516583163	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+134	2984	7705767516583163	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+2999	7137	7705767518160723	CMakeFiles/Home_Buget_App.dir/controller/filters/CompositeFilter.cpp.obj	7c4221b2ab787216
+2986	8193	7705767518020697	CMakeFiles/Home_Buget_App.dir/Home_Buget_App_autogen/mocs_compilation.cpp.obj	a1f1f0f99b5c1f3e
+3012	8413	7705767518290724	CMakeFiles/Home_Buget_App.dir/tests/test_repository.cpp.obj	fe987f365e64723e
+2994	8898	7705767518100719	CMakeFiles/Home_Buget_App.dir/main.cpp.obj	3a307de64ce5b7df
+3005	8970	7705767518210709	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	84e2ec83fa88f550
+8970	18218	7705767577863812	Home_Buget_App.exe	144925ea35a5a573
+32	2904	7705773904092208	Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+32	2904	7705773904092208	Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+32	2904	7705773904092208	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/timestamp	91c3fb5764cde67f
+32	2904	7705773904092208	C:/Git/C-projects/Home Buget App/cmake-build-debug/Home_Buget_App_autogen/mocs_compilation.cpp	91c3fb5764cde67f
+2906	7706	7705773905792947	CMakeFiles/Home_Buget_App.dir/Home_Buget_App_autogen/mocs_compilation.cpp.obj	a1f1f0f99b5c1f3e
+2914	8149	7705773905877870	CMakeFiles/Home_Buget_App.dir/main.cpp.obj	3a307de64ce5b7df
+2920	8622	7705773905948226	CMakeFiles/Home_Buget_App.dir/ui/MainWindow.cpp.obj	84e2ec83fa88f550
+8623	16850	7705773962973780	Home_Buget_App.exe	144925ea35a5a573

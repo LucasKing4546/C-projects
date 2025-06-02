@@ -35,7 +35,6 @@ std::vector<BudgetItem> CompositeFilter::filter(const std::vector<BudgetItem>& i
                 }
             }
         }
-
         return result;
     }
 }

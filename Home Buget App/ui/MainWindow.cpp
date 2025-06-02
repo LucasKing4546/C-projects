@@ -11,6 +11,9 @@
 #include <QLineEdit>
 #include <QDate>
 #include <QFileDialog>
+#include <QGroupBox>
+#include <QRadioButton>
+#include <QButtonGroup>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -29,6 +32,10 @@ MainWindow::MainWindow(QWidget *parent)
     , m_maxAmount(new QDoubleSpinBox(this))
     , m_applyFilterBtn(new QPushButton("Apply Filters", this))
     , m_clearFilterBtn(new QPushButton("Clear Filters", this))
+    , m_andRadio(new QRadioButton("AND (All conditions must match)", this))
+    , m_orRadio(new QRadioButton("OR (Any condition can match)", this))
+    , m_logicGroup(new QButtonGroup(this))
+    , m_logicGroupBox(new QGroupBox("Filter Logic", this))
 {
     // Controller setup
     m_controller = std::make_unique<BudgetController>(
@@ -39,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
     QWidget* central = new QWidget(this);
     auto* mainLayout = new QVBoxLayout(central);
 
-    // --- Filter bar setup ---
+    // Filter bar setup
     m_typeFilter->addItems({ "All", "INCOME", "EXPENSE" });
     m_categoryFilter->addItem("All");
     for (int c = int(Category::FOOD); c <= int(Category::OTHER); ++c) {
@@ -53,6 +60,15 @@ MainWindow::MainWindow(QWidget *parent)
     m_maxAmount->setRange(-1e6, 1e6);
     m_minAmount->setValue(0);
     m_maxAmount->setValue(0);
+
+    // Setup AND/OR radio buttons
+    m_andRadio->setChecked(true); // Default to AND
+    m_logicGroup->addButton(m_andRadio);
+    m_logicGroup->addButton(m_orRadio);
+
+    auto* logicLayout = new QVBoxLayout(m_logicGroupBox);
+    logicLayout->addWidget(m_andRadio);
+    logicLayout->addWidget(m_orRadio);
 
     auto* filterWidget = new QWidget(central);
     auto* filterLayout = new QFormLayout();
@@ -68,14 +84,15 @@ MainWindow::MainWindow(QWidget *parent)
     buttonLayout->addWidget(m_applyFilterBtn);
     buttonLayout->addWidget(m_clearFilterBtn);
 
-    // Combine form layout and buttons in a vertical layout
+    // Combine form layout, logic group, and buttons in a vertical layout
     auto* filterMainLayout = new QVBoxLayout(filterWidget);
     filterMainLayout->addLayout(filterLayout);
+    filterMainLayout->addWidget(m_logicGroupBox);
     filterMainLayout->addLayout(buttonLayout);
 
     mainLayout->addWidget(filterWidget);
 
-    // --- Table setup ---
+    // Table setup
     m_table->setColumnCount(6);
     m_table->setHorizontalHeaderLabels({
         "ID", "Description", "Amount", "Date", "Type", "Category"
@@ -93,7 +110,7 @@ MainWindow::MainWindow(QWidget *parent)
     setCentralWidget(central);
     setWindowTitle("Home Budget Tracker");
 
-    // --- Signals & slots ---
+    // Signals & slots
     connect(m_addBtn,    &QPushButton::clicked, this, &MainWindow::onAddClicked);
     connect(m_updateBtn, &QPushButton::clicked, this, &MainWindow::onUpdateClicked);
     connect(m_removeBtn, &QPushButton::clicked, this, &MainWindow::onRemoveClicked);
@@ -300,6 +317,12 @@ void MainWindow::onLoadClicked() {
     }
 
     if (reply == QMessageBox::Yes) {
+        // Disconnect the previous controller for smooth connection
+        if (m_controller) {
+            disconnect(m_controller.get(), &BudgetController::dataChanged,
+                      this, &MainWindow::refreshTable);
+        }
+
         // Replace current data - create new controller with loaded data
         m_controller = std::make_unique<BudgetController>(
             std::make_unique<CsvRepository>("data.csv"), this
@@ -329,8 +352,11 @@ void MainWindow::onLoadClicked() {
 
 void MainWindow::onApplyFilterClicked() {
     try {
-        // Create a composite filter with AND logic (all conditions must be met)
-        auto compositeFilter = std::make_unique<CompositeFilter>(LogicalOperator::AND);
+        // Determine the logical operator based on radio button selection
+        LogicalOperator logicOp = m_andRadio->isChecked() ? LogicalOperator::AND : LogicalOperator::OR;
+
+        // Create a composite filter with the selected logic
+        auto compositeFilter = std::make_unique<CompositeFilter>(logicOp);
         bool hasActiveFilters = false;
 
         // 1. Add Type Filter
@@ -362,10 +388,15 @@ void MainWindow::onApplyFilterClicked() {
             return;
         }
 
-        // Always apply date filter with current range
-        auto dateFilter = std::make_unique<DateFilter>(DateComparison::BETWEEN, fromDate, toDate);
-        compositeFilter->addFilter(std::move(dateFilter));
-        hasActiveFilters = true;
+        // Check if user has modified the date range from default
+        QDate defaultFromDate = QDate::currentDate().addMonths(-1);
+        QDate defaultToDate = QDate::currentDate();
+
+        if (fromDate != defaultFromDate || toDate != defaultToDate) {
+            auto dateFilter = std::make_unique<DateFilter>(DateComparison::BETWEEN, fromDate, toDate);
+            compositeFilter->addFilter(std::move(dateFilter));
+            hasActiveFilters = true;
+        }
 
         // 4. Add Amount Range Filter
         double minAmount = m_minAmount->value();
@@ -396,9 +427,18 @@ void MainWindow::onApplyFilterClicked() {
             auto filteredItems = m_controller->getFilteredItems(*compositeFilter);
             populateTable(filteredItems);
 
+            // Show a status message indicating the logic used and number of results
+            QString logicText = m_andRadio->isChecked() ? "AND" : "OR";
+            QString statusMsg = QString("Applied filters with %1 logic. Found %2 items.")
+                                   .arg(logicText).arg(filteredItems.size());
+
+            // You could show this in a status bar if you have one, or temporarily in window title
+            setWindowTitle(QString("Home Budget Tracker - %1").arg(statusMsg));
+
         } else {
             // No filters applied, show all items
             refreshTable();
+            QMessageBox::information(this, "No Filters", "No filter criteria specified. Showing all items.");
         }
 
     } catch (const std::exception& e) {
@@ -409,7 +449,6 @@ void MainWindow::onApplyFilterClicked() {
     }
 }
 
-// Bonus: Enhanced Clear Filters method
 void MainWindow::onClearFilterClicked() {
     // Reset all filter controls to default values
     m_typeFilter->setCurrentIndex(0);           // "All"
@@ -419,6 +458,12 @@ void MainWindow::onClearFilterClicked() {
     m_minAmount->setValue(0);
     m_maxAmount->setValue(0);
 
+    // Reset to AND logic as default
+    m_andRadio->setChecked(true);
+
     // Show all items
     refreshTable();
+
+    // Reset window title
+    setWindowTitle("Home Budget Tracker");
 }
